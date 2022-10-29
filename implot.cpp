@@ -2858,9 +2858,17 @@ void EndPlot() {
                     min_len = len;
                 }
             }
-            DrawList.AddLine(an.Pos, corners[min_corner], an.ColorBg);
+            if (an.ColorBg == 0 || !(an.ColorBg >> 24 & 0xff))
+              DrawList.AddLine(an.Pos, corners[min_corner], an.ColorFg);
+            else
+              DrawList.AddLine(an.Pos, corners[min_corner], an.ColorBg);
         }
-        DrawList.AddRectFilled(rect.Min, rect.Max, an.ColorBg);
+        if (an.ColorBg == 0 || !(an.ColorBg >> 24 & 0xff)) {
+          DrawList.AddRectFilled(rect.Min, rect.Max, an.ColorBg | 0xff000000);
+          DrawList.AddRect(rect.Min, rect.Max, an.ColorFg);
+	} else {
+          DrawList.AddRectFilled(rect.Min, rect.Max, an.ColorBg);
+	}
         DrawList.AddText(pos + gp.Style.AnnotationPadding, an.ColorFg, txt);
     }
 
