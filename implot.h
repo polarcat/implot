@@ -753,6 +753,7 @@ IMPLOT_API void SetupAxisZoomConstraints(ImAxis axis, double z_min, double z_max
 IMPLOT_API void SetupAxes(const char* x_label, const char* y_label, ImPlotAxisFlags x_flags=0, ImPlotAxisFlags y_flags=0);
 // Sets the primary X and Y axes range limits. If ImPlotCond_Always is used, the axes limits will be locked (shorthand for two calls to SetupAxisLimits).
 IMPLOT_API void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond = ImPlotCond_Once);
+IMPLOT_API void SetupAxesLimits2(double x_min, double x_max, double y_min, double y_max, ImPlotCond x_cond = ImPlotCond_Once, ImPlotCond y_cond = ImPlotCond_Once);
 
 // Sets up the plot legend.
 IMPLOT_API void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags=0);

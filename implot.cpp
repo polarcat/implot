@@ -2250,6 +2250,11 @@ void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImP
     SetupAxisLimits(ImAxis_Y1, y_min, y_max, cond);
 }
 
+void SetupAxesLimits2(double x_min, double x_max, double y_min, double y_max, ImPlotCond x_cond, ImPlotCond y_cond) {
+    SetupAxisLimits(ImAxis_X1, x_min, x_max, x_cond);
+    SetupAxisLimits(ImAxis_Y1, y_min, y_max, y_cond);
+}
+
 void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags) {
     IM_ASSERT_USER_ERROR(GImPlot->CurrentPlot != NULL && !GImPlot->CurrentPlot->SetupLocked,
                          "Setup needs to be called after BeginPlot and before any setup locking functions (e.g. PlotX)!");
